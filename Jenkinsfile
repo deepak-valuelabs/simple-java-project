@@ -1,10 +1,12 @@
 pipeline{
     agent any 
     stages {
-        stage ('Display message') {
+        stage ('git checkout') {
             steps {
-                echo "Hi Good Morning"
+                checkout scm
+                sh 'mvn test'
             }
         }
     }
 }
+                
