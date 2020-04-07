@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage ('Display message') {
             steps {
-                echo '${params.welcome}'
+                echo "Hi Good Morning"
             }
         }
     }
