@@ -1,16 +1,10 @@
-pipeline {
-    agent {
-        docker {
-            image '${myimage}'
-        }
-    }
+pipeline{
+    agent any 
     stages {
-        stage('build') {
+        stage ('Display message') {
             steps {
-                checkout scm 
-                sh 'mvn test'
+                echo "$welcome message" 
             }
         }
-        
     }
 }
