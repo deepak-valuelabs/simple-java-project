@@ -1,5 +1,5 @@
 pipeline{
-    agent any 
+    agent { docker 'maven:3-alpine' }
     stages {
         stage ('git checkout') {
             steps {
@@ -7,7 +7,6 @@ pipeline{
             }
         }
         stage ('maven compile') {
-            agent { docker 'maven:3-alpine' }
             steps {
                 sh 'mvn compile'
             }
