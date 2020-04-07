@@ -4,12 +4,21 @@ pipeline{
         stage ('git checkout') {
             steps {
                 checkout scm
-                sh 'mvn test'
             }
         }
         stage ('maven compile') {
             steps {
                 sh 'mvn compile'
+            }
+        }
+        stage ('maven test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage ('maven package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
