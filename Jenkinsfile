@@ -1,26 +1,11 @@
-pipeline{
-    agent { docker 'maven:3-alpine' }
+pipeline {
     stages {
-        stage ('git checkout') {
+        stage('build') {
+            agent { docker 'maven:3-alpine' }
             steps {
                 checkout scm
-            }
-        }
-        stage ('maven compile') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
-        stage ('maven test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage ('maven package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
+                 sh 'mvn test'
+           }
+        }  
     }
-}
-                
+}    
