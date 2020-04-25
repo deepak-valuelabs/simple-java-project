@@ -43,7 +43,7 @@
                                     <groupId>org.eclipse.jetty</groupId>
                                     <artifactId>jetty-runner</artifactId>
                                     <version>9.3.3.v20150827</version>
-                                    <destFileName>my-codejava.jar</destFileName>
+                                    <destFileName>my-codejava1.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
