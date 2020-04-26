@@ -1,11 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('My-app-compile') {
             steps {
                 checkout scm
                  sh 'mvn compile'
            }
         }  
+        stage('My-app-test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('My-app-package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
     }
 } 
