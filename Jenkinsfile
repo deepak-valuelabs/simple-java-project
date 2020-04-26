@@ -8,7 +8,12 @@ pipeline {
                 checkout scm
                  sh 'mvn compile'
            }
-        }  
+        }
+        stage('approval') {
+            steps {
+                input ('Do you want to proceed')
+            }
+        }
         stage('My-app-test') {
             steps {
                 sh 'mvn test'
