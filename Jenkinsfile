@@ -1,6 +1,7 @@
 pipeline {
     agent {
         docker { image: 'maven:3-alpine' }
+    }
     stages {
         stage('My-app-compile') {
             steps {
