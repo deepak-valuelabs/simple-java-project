@@ -7,6 +7,11 @@ pipeline {
                    sh 'mvn compile'
                }
         }
+        stage ('test case run') {
+            steps {
+                sh 'mvn test'
+            }
+        }
     }
 }
                
