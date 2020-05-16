@@ -1,8 +1,9 @@
 pipeline {
-    agent any 
+    agent {
+        docker { image 'maven:3-alpine' }
+    }
     stages {
         stage ('compile job for my code') {
-            agent { docker 'maven:3-alpine' }
                steps {
                    checkout scm 
                    sh 'mvn compile'
