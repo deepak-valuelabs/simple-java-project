@@ -6,9 +6,6 @@ pipeline {
         stage ('compile job for my code') {
                steps {
                    checkout scm 
-                   sh 'mkdir folder'
-                   sh 'htop'
-                   
                    sh 'mvn compile'
                }
         }
