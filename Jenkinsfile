@@ -1,8 +1,5 @@
 pipeline {
-    agent any 
-#    {
-#        docker { image 'maven:3-alpine' }
-#    }
+    agent any
     stages {
         stage ('compile job for my code') {
                steps {
