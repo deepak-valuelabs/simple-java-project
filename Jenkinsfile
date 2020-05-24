@@ -1,22 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage ('compile job for my code') {
+        stage ('test my code') {
                steps {
                    checkout scm 
-                   sh 'mvn compile'
+                   sh 'mvn test'
                }
-        }
-        stage ('test case run') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage ('package my code') {
-            steps {
-                sh 'mvn package'
-                
-            }
         }
     }
 }
