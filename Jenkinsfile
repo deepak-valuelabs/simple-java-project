@@ -4,7 +4,7 @@ pipeline {
         stage ('test my code') {
                steps {
                    checkout scm 
-                   sh 'mvn test'
+                   sh "${command}"
                }
         }
     }
