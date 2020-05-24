@@ -12,6 +12,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage ('approval') {
+            steps {
+                input ('Do you want to proceed')
+            }
+        }
         stage ('package my code') {
             steps {
                 sh 'mvn package'
