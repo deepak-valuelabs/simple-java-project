@@ -22,7 +22,7 @@ pipeline {
                 sh 'mvn package'
                 sh 'pwd'
                 sh 'mkdir ${path}'
-                sh 'cp -r /var/lib/jenkins/workspace/Anil_pipeline_2/* ${path}'
+                sh 'cp -r /var/lib/jenkins/workspace/pipe-2323/* ${path}'
             }
         }
     }
