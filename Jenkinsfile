@@ -1,24 +1,24 @@
 pipeline {
-    agent {
-        docker { image 'maven:3-alpine' }
-    }
-    stages {
-        stage ('test my code') {
-               steps {
-                   checkout scm 
-                   sh 'mvn test'
-               }
-        }
-        stage ('compile my code') {
+    agent any
+    stages{
+        stage('Application Build'){
             steps {
-                sh 'mvn compile'
+                checkout scm 
+                sh "mvn build"
             }
         }
-        stage ('package my code') {
-            steps {
-         
+        stage('test my code'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('Package my Application'){
+            steps{
+                sh 'mvn package'
+                sh 'pwd'
+                sh 'mkdir /root/dpk'
+                sh 'cp -r * /root/dpk/'
             }
         }
     }
 }
-               
