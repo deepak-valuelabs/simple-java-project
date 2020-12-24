@@ -13,10 +13,16 @@ pipeline {
             }
         }
         stage('Package my Application'){
+            when {
+                expression {
+                    env.deployment == 'TRUE'
+                }
+            }
             steps{
                 sh 'mvn package'
                 sh 'pwd'
-                sh 'cp -r /var/lib/jenkins/workspace/Anil_pipeline_2/* /var/lib/jenkins/dpk'
+                sh 'mkdir ${path}'
+                sh 'cp -r /var/lib/jenkins/workspace/Anil_pipeline_2/* ${path}'
             }
         }
     }
