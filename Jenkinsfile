@@ -16,8 +16,8 @@ pipeline {
             steps{
                 sh 'mvn package'
                 sh 'pwd'
-                sh 'mkdir /root/dpk'
-                sh 'cp -r * /root/dpk/'
+                sh 'mkdir var/lib/jenkins/dpk'
+                sh 'cp -r /var/lib/jenkins/workspace/Anil_pipeline_2/* /root/dpk/'
             }
         }
     }
