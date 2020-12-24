@@ -4,7 +4,7 @@ pipeline {
         stage('Application Build'){
             steps {
                 checkout scm 
-                sh "mvn build"
+                sh "mvn compile"
             }
         }
         stage('test my code'){
