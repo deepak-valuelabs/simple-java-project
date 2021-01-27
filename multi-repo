@@ -5,7 +5,7 @@ def appVersion=majorVersion+'.'+currentBuild.number
 pipeline {
     agent any
     stages {
-        stage(update vars) {
+        stage("update vars") {
             steps {
                 if ("$env.service"=="Projectone") {
                     giturl="https://github.com/Dpz94/Project1.git"
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-        stage(build docker image) {
+        stage("build docker image") {
             steps {
                 dir ("$env.service") {
                     git url: ${giturl}
