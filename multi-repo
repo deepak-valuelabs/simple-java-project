@@ -28,7 +28,7 @@ pipeline {
                     git url: ${giturl}
                     echo ("Application: ${application}, Version: ${appVersion}")
 				    docker.withRegistry("https://hub.docker.net/") {
-                        def appImage = docker.build("${huburl}:appVersion" ".")
+                        def appImage = docker.build("${huburl}:appVersion")
                         appImage.push("${appVersion}")
                     }
                 }
