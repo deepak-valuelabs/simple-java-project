@@ -2,9 +2,11 @@ pipeline {
     agent any
     stages {
         stage(checkout) {
-            dir('consul') {
-                git url: "https://github.com/Dpz94/Sample-Pro.git"
-            }
+            steps {
+                dir('consul') {
+                    git url: "https://github.com/Dpz94/Sample-Pro.git"
+                }
         }
     }
+}
 }
