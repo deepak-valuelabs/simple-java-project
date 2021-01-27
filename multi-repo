@@ -6,6 +6,9 @@ pipeline {
                 dir('consul') {
                     git url: "https://github.com/Dpz94/Sample-Pro.git"
                 }
+                dir('java') {
+                    git url: "https://github.com/Dpz94/Project1.git"
+                }
         }
     }
 }
