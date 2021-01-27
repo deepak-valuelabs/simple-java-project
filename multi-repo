@@ -23,6 +23,7 @@ pipeline {
                 }
             }
         }
+	}
         stage("build docker image") {
             steps {
                 dir ("$env.service") {
@@ -36,5 +37,4 @@ pipeline {
             }
         }
     }
-}
 }
