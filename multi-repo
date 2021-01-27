@@ -1,15 +1,38 @@
+def application = $env.service
+def defaultMajorVersion = '1.0'
+def majorVersion = '1.0'
+def appVersion=majorVersion+'.'+currentBuild.number
 pipeline {
     agent any
     stages {
-        stage(checkout) {
+        stage(update vars) {
             steps {
-                dir('consul') {
-                    git url: "https://github.com/Dpz94/Sample-Pro.git"
+                if ("$env.service"=="Projectone") {
+                    giturl="https://github.com/Dpz94/Project1.git"
+                    huburl="https://hub.docker.net/"
+                    vars="CONFIGVERSION=${appVersion}"
                 }
-                dir('java') {
-                    git url: "https://github.com/Dpz94/Project1.git"
+                if ("$env.service"=="Projecttwo") {
+                    giturl="https://github.com/Dpz94/Sample-Pro.git"
+                    huburl="https://hub.docker.net/"
                 }
+                if ("$env.service"=="Project3") {
+                    giturl="https://github.com/Dpz94/Sample-Pro.git"
+                    huburl="https://hub.docker.net/"
+                }
+            }
+        }
+        stage(build docker image) {
+            steps {
+                dir ("$env.service") {
+                    git url: ${giturl}
+                    echo ("Application: ${application}, Version: ${appVersion}")
+				    docker.withRegistry("https://hub.comcast.net/", "jenkins_cf_login") {
+                        def appImage = docker.build("${huburl}:appVersion", .")
+                        appImage.push("${appVersion}")
+                    }
+                }
+            }
         }
     }
-}
 }
