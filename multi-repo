@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage("update vars") {
             steps {
+	        script {
                 if ("$env.service"=="Projectone") {
                     giturl="https://github.com/Dpz94/Project1.git"
                     huburl="https://hub.docker.net/"
@@ -35,4 +36,5 @@ pipeline {
             }
         }
     }
+}
 }
