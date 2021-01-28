@@ -23,9 +23,8 @@ pipeline {
                 }
             }
         }
-	}
-def git = "${giturl}"
         stage("build docker image") {
+	def git = "${giturl}"
             steps {
 	        echo "Git url is ${git}"
 		script {
