@@ -1,4 +1,4 @@
-def application = $env.service
+def application = env.service
 def defaultMajorVersion = '1.0'
 def majorVersion = '1.0'
 def appVersion=majorVersion+'.'+currentBuild.number
@@ -8,16 +8,16 @@ pipeline {
         stage("update vars") {
             steps {
 	        script {
-                if ("$env.service"=="Projectone") {
+                if ("env.service"=="Projectone") {
                     giturl="https://github.com/Dpz94/Project1.git"
                     huburl="https://hub.docker.net/"
                     vars="CONFIGVERSION=${appVersion}"
                 }
-                if ("$env.service"=="Projecttwo") {
+                if ("env.service"=="Projecttwo") {
                     giturl="https://github.com/Dpz94/Sample-Pro.git"
                     huburl="https://hub.docker.net/"
                 }
-                if ("$env.service"=="Project3") {
+                if ("env.service"=="Project3") {
                     giturl="https://github.com/Dpz94/Sample-Pro.git"
                     huburl="https://hub.docker.net/"
                 }
@@ -27,7 +27,7 @@ pipeline {
         stage("build docker image") {
             steps {
 	        script {
-                dir ("$env.service") {
+                dir ("env.service") {
                     git url: "${giturl}"
                     echo ("Application: ${application}, Version: ${appVersion}")
 				    docker.withRegistry("https://hub.docker.net/") {
