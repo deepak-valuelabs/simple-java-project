@@ -26,9 +26,9 @@ pipeline {
 	}
         stage("build docker image") {
             steps {
-	        script {
+	        echo "Git url is ${giturl}"
                 dir ("$application") {
-                    git branch: 'master', url: $giturl
+                    git branch: 'master', url: ${giturl}
                     echo ("Application: ${application}, Version: ${appVersion}")
 				    docker.withRegistry("https://hub.docker.net/") {
                         def appImage = docker.build("${huburl}:appVersion")
@@ -38,5 +38,4 @@ pipeline {
             }
         }
     }
-}
 }
