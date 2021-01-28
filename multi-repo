@@ -28,7 +28,7 @@ pipeline {
             steps {
 	        script {
                 dir ("$application") {
-                    git branch: 'master', url: "${giturl}"
+                    git branch: 'master', url: "https://github.com/Dpz94/Project1.git"
                     echo ("Application: ${application}, Version: ${appVersion}")
 				    docker.withRegistry("https://hub.docker.net/") {
                         def appImage = docker.build("${huburl}:appVersion")
