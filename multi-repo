@@ -9,27 +9,26 @@ pipeline {
             steps {
 	        script {
                 if ("env.service"=="Projectone") {
-                    giturl="https://github.com/Dpz94/Project1.git"
+                    repo="https://github.com/Dpz94/Project1.git"
                     huburl="https://hub.docker.net/"
                     vars="CONFIGVERSION=${appVersion}"
                 }
                 if ("env.service"=="Projecttwo") {
-                    giturl="https://github.com/Dpz94/Sample-Pro.git"
+                    repo="https://github.com/Dpz94/Sample-Pro.git"
                     huburl="https://hub.docker.net/"
                 }
                 if ("env.service"=="Project3") {
-                    giturl="https://github.com/Dpz94/Sample-Pro.git"
+                    repo="https://github.com/Dpz94/Sample-Pro.git"
                     huburl="https://hub.docker.net/"
                 }
             }
         }
         stage("build docker image") {
-	def git = "${giturl}"
             steps {
-	        echo "Git url is ${git}"
+	        echo "Git url is ${repo}"
 		script {
                 dir ("$application") {
-                    git branch: 'master', url: '${git}'
+                    git branch: 'master', url: '${repo}'
                     echo ("Application: ${application}, Version: ${appVersion}")
 				    docker.withRegistry("https://hub.docker.net/") {
                         def appImage = docker.build("${huburl}:appVersion")
