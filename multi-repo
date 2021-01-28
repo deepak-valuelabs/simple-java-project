@@ -26,6 +26,7 @@ pipeline {
 	}
         stage("build docker image") {
             steps {
+	        script {
                 dir ("$env.service") {
                     git url: "${giturl}"
                     echo ("Application: ${application}, Version: ${appVersion}")
@@ -37,4 +38,5 @@ pipeline {
             }
         }
     }
+}
 }
