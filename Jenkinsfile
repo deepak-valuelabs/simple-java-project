@@ -1,32 +1,15 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'maven:3-alpine' }
+    }
     stages {
-        stage('compile') {
-            steps {
-                checkout scm
-                sh 'mvn compile'
-            }
-        }
-        stage('test on condition') {
-            steps {
-                script {
-                    if (env.TEST == 'TRUE') {
-                        sh 'mvn test'
-                    } 
-                    else if (env.TEST == 'FALSE') {
-                        echo 'set to FALSE'
-                    }
-                    else if (env.TEST == 'DISABLE') {
-                        echo 'set to disable'
-                    }
-                }
-            }
-        }        
-        stage('package') {
-            steps {
-                sh 'mvn package'
-            }
+        stage('complie') {
+        steps {
+            sh 'mvn compile'
+           }
         }
     }
 }
+            
+
+
