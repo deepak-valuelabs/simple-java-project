@@ -1,34 +1,27 @@
 pipeline {
     agent any
+
     stages {
-        stage("checkout code") {
+        stage('test') {
             steps {
-                checkout scm
+                sh 'echo hello'
             }
         }
-        stage("compile") {
+        stage('test1') {
             steps {
-                sh "mvn compile"
+                sh 'echo $TEST'
             }
         }
-        stage("test my code on condition") {
+        stage('test3') {
             steps {
                 script {
-                    if ($env.test==="TRUE") {
-                        sh "mvn test"
-                    }
-                    else {
-                        echo "disable"
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
                     }
                 }
             }
         }
-        stage("package my code") {
-            steps {
-                sh "mvn package"
-            }
-        }
     }
 }
-           
-  
