@@ -6,10 +6,27 @@ pipeline {
                 checkout scm
             }
         }
-        stage($action) {
+        stage("compile") {
             steps {
-                sh "mvn $action"
+                sh "mvn compile"
+            }
+        }
+        stage("test my code on condition") {
+            when {
+                expression {
+                    env.test == 'TRUE'
+                }
+            }
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage("package my code") {
+            steps {
+                sh "mvn package"
             }
         }
     }
 }
+           
+  
