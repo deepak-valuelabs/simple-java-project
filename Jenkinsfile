@@ -13,10 +13,11 @@ pipeline {
                 script {
                     if (env.TEST == 'TRUE') {
                         sh 'mvn test'
-                    } else if (env.TEST == 'FALSE') {
+                    } 
+                    else if (env.TEST == 'FALSE') {
                         echo 'set to FALSE'
                     }
-                    else (env.TEST == 'DISABLE') {
+                    else if (env.TEST == 'DISABLE') {
                         echo 'set to disable'
                     }
                 }
