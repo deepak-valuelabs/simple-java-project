@@ -13,15 +13,14 @@ pipeline {
         }
         stage("test my code on condition") {
             steps {
-            if (test=="TRUE") {
-                sh "mvn test"
-            }
-            else (test=="FALSE") {
-                echo "Test case not preferred"
-            }
-//            else (test=="DISABLE") {
-//                echo "Test is disabled"
-//            }
+                script {
+                    if (test==="TRUE") {
+                        sh "mvn test"
+                    }
+                    else {
+                        echo "disable"
+                    }
+                }
             }
         }
         stage("package my code") {
