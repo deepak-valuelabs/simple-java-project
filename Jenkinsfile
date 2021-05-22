@@ -19,10 +19,10 @@ pipeline {
                     if (env.TEST == 'TRUE') {
                         sh 'mvn test'
                     } else if (env.TEST == 'FALSE') {
-                        echo ' set to FALSE'
+                        echo 'set to FALSE'
                     }
                     else (env.TEST == 'DISABLE') {
-                        echo "set to disable'
+                        echo 'set to disable'
                     }
                 }
             }
