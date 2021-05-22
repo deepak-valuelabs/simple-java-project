@@ -14,7 +14,7 @@ pipeline {
         stage("test my code on condition") {
             when {
                 expression {
-                    env.test == 'TRUE'
+                    env.test == true
                 }
             }
             steps {
