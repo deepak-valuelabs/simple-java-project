@@ -14,7 +14,7 @@ pipeline {
         stage("test my code on condition") {
             steps {
                 script {
-                    if (test==="TRUE") {
+                    if (env.test==="TRUE") {
                         sh "mvn test"
                     }
                     else {
