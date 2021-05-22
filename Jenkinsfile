@@ -8,12 +8,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        stage('package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-        stage('test3') {
+        stage('test on condition') {
             steps {
                 script {
                     if (env.TEST == 'TRUE') {
@@ -25,6 +20,11 @@ pipeline {
                         echo 'set to disable'
                     }
                 }
+            }
+        }        
+        stage('package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
