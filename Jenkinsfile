@@ -12,13 +12,13 @@ pipeline {
             }
         }
         stage("test my code on condition") {
-            if(test=="TRUE") {
+            if (test=="TRUE") {
                 sh "mvn test"
             }
-            else if(test=="FALSE") {
+            else if (test=="FALSE") {
                 echo "Test case not preferred"
             }
-            else(test=="DISABLE") {
+            else (test=="DISABLE") {
                 echo "Test is disabled"
             }
         }
