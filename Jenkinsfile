@@ -15,7 +15,7 @@ pipeline {
         stage('test3') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'master') {
+                    if (env.TEST == 'TRUE') {
                         echo 'I only execute on the master branch'
                     } else {
                         echo 'I execute elsewhere'
