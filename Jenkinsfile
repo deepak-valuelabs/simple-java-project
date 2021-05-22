@@ -6,7 +6,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage("$action") {
+        stage($action) {
             steps {
                 sh "mvn $action"
             }
