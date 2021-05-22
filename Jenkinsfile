@@ -2,23 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('test') {
+        stage('compile') {
             steps {
-                sh 'echo hello'
+                checkout scm
+                sh 'mvn compile'
             }
         }
-        stage('test1') {
+        stage('package') {
             steps {
-                sh 'echo $TEST'
+                sh 'mvn package'
             }
         }
         stage('test3') {
             steps {
                 script {
                     if (env.TEST == 'TRUE') {
-                        echo 'I only execute on the master branch'
-                    } else {
-                        echo 'I execute elsewhere'
+                        sh 'mvn test'
+                    } else if (env.TEST == 'FALSE') {
+                        echo ' set to FALSE'
+                    }
+                    else (env.TEST == 'DISABLE') {
+                        echo "set to disable'
                     }
                 }
             }
