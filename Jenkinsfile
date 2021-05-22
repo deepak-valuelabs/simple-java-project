@@ -12,13 +12,14 @@ pipeline {
             }
         }
         stage("test my code on condition") {
-            when {
-                expression {
-                    env.test == 'TRUE'
-                }
-            }
-            steps {
+            if(test=="TRUE") {
                 sh "mvn test"
+            }
+            else if(test=="FALSE") {
+                echo "Test case not preferred"
+            }
+            else(test=="DISABLE") {
+                echo "Test is disabled"
             }
         }
         stage("package my code") {
