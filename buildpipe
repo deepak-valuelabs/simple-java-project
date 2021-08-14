@@ -1,0 +1,14 @@
+pipeline {
+  agent any
+  stages {
+    stage('checkout the code') {
+      steps {
+        checout scm
+      }
+    }
+    stage ("build my code") {
+      steps {
+        sh "mvn build"
+      }
+    }
+  }
