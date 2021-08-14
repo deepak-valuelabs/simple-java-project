@@ -8,8 +8,8 @@ pipeline {
     }
     stage ("build my code") {
       steps {
+        echo "running compile for my code"
         sh "mvn compile"
-        sh "mkdir /var/lib/jenkins/deepak"
       }
     }
     stage ("test my code") {
