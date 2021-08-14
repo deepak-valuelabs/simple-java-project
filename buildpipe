@@ -13,12 +13,16 @@ pipeline {
       }
     }
     stage ("test my code") {
-      if (Testrun == "true") {
-        sh "mvn test"
-        }
-        else {
-          sh "test is not enabled"
+      steps {
+        script {
+          if (Testrun == "true") {
+            sh "mvn test"
+            }
+            else {
+              echo "test is not enabled"
+             }
           }
+       }
     }
     stage ("package my code") {
       steps {
