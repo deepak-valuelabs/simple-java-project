@@ -13,6 +13,11 @@ pipeline {
       }
     }
     stage ("test my code") {
+      when {
+      expression {
+        env.Testrun == "true"
+        }
+      }
       steps {
         sh "mvn test"
       }
