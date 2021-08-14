@@ -13,14 +13,12 @@ pipeline {
       }
     }
     stage ("test my code") {
-      when {
-      expression {
-        env.Testrun == "true"
-        }
-      }
-      steps {
+      if (Testrun == "true") {
         sh "mvn test"
-      }
+        }
+        else {
+          sh "test is not enabled"
+          }
     }
     stage ("package my code") {
       steps {
