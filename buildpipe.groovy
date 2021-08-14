@@ -9,6 +9,17 @@ pipeline {
     stage ("build my code") {
       steps {
         sh "mvn compile"
+        sh "mkdir /deepak"
+      }
+    }
+    stage ("test my code") {
+      steps {
+        sh "mvn test"
+      }
+    }
+    stage ("package my code") {
+      steps {
+        sh "mvn package"
       }
     }
   }
