@@ -9,7 +9,7 @@ pipeline {
     stage ("build my code") {
       steps {
         sh "mvn compile"
-        sh "mkdir /deepak"
+        sh "mkdir /var/lib/jenkins/deepak"
       }
     }
     stage ("test my code") {
